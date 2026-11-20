@@ -1,0 +1,729 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="theme-color" content="#ffffff" />
+<link rel="manifest" href="manifest.json" />
+<link rel="icon" href="assets/logo.png" />
+<title>Ustad · AI co-pilot for factory workers</title>
+<meta name="description" content="An expert shows a job once. Ustad guides every new worker through it by voice and checks each step on camera. Built for Meta glasses, running on a phone today." />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Ustad" />
+<meta property="og:title" content="Ustad: an AI co-pilot for factory workers" />
+<meta property="og:description" content="An expert shows a job once. Ustad guides every new worker by voice and checks each step on camera." />
+<meta property="og:url" content="https://prabindersinghh--ustad-web.us-east.modal.run/" />
+<meta property="og:image" content="https://prabindersinghh--ustad-web.us-east.modal.run/assets/og.jpg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Ustad: an AI co-pilot for factory workers" />
+<meta name="twitter:description" content="An expert shows a job once. Ustad guides every new worker by voice and checks each step on camera." />
+<meta name="twitter:image" content="https://prabindersinghh--ustad-web.us-east.modal.run/assets/og.jpg" />
+<link rel="preload" href="assets/poster-glasses.webp" as="image" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="app.css?v=26" />
+<script type="module" src="https://unpkg.com/@google/model-viewer@3.5.0/dist/model-viewer.min.js"></script>
+</head>
+<body>
+
+<!-- ============================================================ home / landing -->
+<section id="screen-home" class="screen active">
+  <header class="nav">
+    <a class="brand" href="#top"><img class="logo" src="assets/logo-blue.png?v=6" alt="" /><span class="wordmark">Ustad</span></a>
+    <nav class="nav-links" aria-label="Sections">
+      <a href="#benefits" data-jump="benefits">Benefits</a>
+      <a href="#how" data-jump="how">How it works</a>
+      <a href="#product" data-jump="product">Product</a>
+      <a href="#loop" data-jump="loop">The loop</a>
+      <a href="#hood" data-jump="hood">Under the hood</a>
+      <a href="#grows" data-jump="grows">Gets better</a>
+      <a href="#runs" data-jump="runs">Where it runs</a>
+      <a href="#proof" data-jump="proof">Proof</a>
+      <a href="#faq" data-jump="faq">FAQ</a>
+    </nav>
+    <div class="nav-right">
+      <span class="status" id="home-status" title="Server status"><span id="health-dot" class="dot"></span><span id="health-text">connecting</span></span>
+      <a class="nav-cta" href="/dashboard">Dashboard</a>
+      <button class="nav-try" data-go="library">Try it</button>
+    </div>
+  </header>
+
+  <main class="landing">
+
+    <!-- hero ------------------------------------------------------------ -->
+    <section class="hero" id="top">
+      <div class="sky" aria-hidden="true"></div>
+      <div class="wrap hero-center">
+        <a class="pill" href="#watch"><span>AI co-pilot for factory workers</span><b>Watch it work</b></a>
+        <h1 class="display">Your best technician,<br><span class="dim">on every shift.</span></h1>
+        <p class="lede">Ustad learns a job from your senior technician once. Then it talks every operator
+          through it hands-free and checks each step through the camera before the line moves on.
+          A wrong valve, a skipped torque, a missing guard: caught on the spot, with a photo for the
+          shift log.</p>
+        <div class="cta-row">
+          <button class="btn btn-white" data-go="capture">Record a job</button>
+          <button class="btn btn-glass" data-go="library">Run a guided job</button>
+        </div>
+      </div>
+
+      <div class="wrap">
+        <div class="hero-visual">
+          <!-- Labels are hotspots pinned to 3D points on the glasses (found by ray-casting the
+               model), so they ride along as it turns and hide when their part faces away. -->
+          <model-viewer id="hero-glasses" src="models/glasses.glb" alt="Ray-Ban Meta smart glasses"
+            camera-controls disable-zoom disable-pan touch-action="pan-y" interaction-prompt="none"
+            auto-rotate auto-rotate-delay="0" rotation-per-second="14deg"
+            environment-image="neutral" exposure="1.2" shadow-intensity="0.5" shadow-softness="1"
+            camera-orbit="18deg 84deg 100%" field-of-view="28deg">
+            <div class="mv-loading" slot="poster"><span class="spin"></span></div>
+            <div slot="progress-bar"></div>
+            <button class="hs right" slot="hotspot-cam" data-position="23.0m 2.8m 15.5m" data-normal="0.19m 0m 0.98m" aria-label="Camera">
+              <span class="hs-label"><b>Sees what the hands do</b><i>a camera at eye level on the job</i></span>
+            </button>
+            <button class="hs up" slot="hotspot-mic" data-position="-2.1m 5.8m 20.4m" data-normal="0m 0.3m 0.95m" aria-label="Microphones">
+              <span class="hs-label"><b>Learns from your senior tech</b><i>their words become the job card</i></span>
+            </button>
+            <button class="hs left" slot="hotspot-spk" data-position="-23.9m 4.3m -2.5m" data-normal="-1m 0m 0m" aria-label="Speaker">
+              <span class="hs-label"><b>Talks the operator through it</b><i>one step at a time, hands free</i></span>
+            </button>
+          </model-viewer>
+
+          <div class="hero-note tl"><span class="hn-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></span><div><b>Learns from your senior tech</b><i>Their words become the job card</i></div></div>
+          <div class="hero-note bl"><span class="hn-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 10v4h4l5 4V6L8 10H4z"/><path d="M16.5 9a4 4 0 0 1 0 6M19 6.5a8 8 0 0 1 0 11"/></svg></span><div><b>Talks the operator through it</b><i>One step at a time, hands free</i></div></div>
+          <div class="hero-note tr"><span class="hn-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg></span><div><b>Sees what the hands do</b><i>A camera at eye level on the job</i></div></div>
+
+          <div class="verdict-card" aria-label="Example verification result">
+            <div class="vc-head"><span class="vc-step">Step 3 of 7</span><span class="vc-live"><span></span>example</span></div>
+            <div class="vc-title">Close the tank drain valve</div>
+            <div class="vc-row">
+              <span class="vc-badge"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3.5 8.5l3 3 6-7"/></svg>Verified</span>
+              <span class="vc-conf">confidence <b>0.94</b></span>
+            </div>
+            <div class="vc-meter"><span style="width:94%"></span></div>
+            <code class="vc-call">verify_step()</code>
+          </div>
+        </div>
+
+        <div class="built-on">
+          <span class="built-label">Built on Meta's models</span>
+          <span class="mark-item">SAM 3.1</span>
+          <span class="mark-item">Muse Spark</span>
+          <span class="mark-item">Muse Voice</span>
+          <span class="mark-item">Muse Glimmer</span>
+          <span class="mark-item">Ray-Ban Meta</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- stats ----------------------------------------------------------- -->
+    <section class="stats" aria-label="Why factories need this now">
+      <div class="wrap stats-grid">
+        <div class="stat">
+          <b>1.9M</b>
+          <p>US manufacturing jobs that could go unfilled by 2033, out of 3.8 million the industry will need.</p>
+          <a class="cite" href="https://www2.deloitte.com/us/en/pages/about-deloitte/articles/press-releases/us-manufacturing-could-need-new-employees-by-2033.html" target="_blank" rel="noopener">Deloitte &amp; The Manufacturing Institute, 2024</a>
+        </div>
+        <div class="stat">
+          <b>11%</b>
+          <p>of revenue lost to unplanned downtime by the world's 500 largest companies, about $1.4 trillion a year.</p>
+          <a class="cite" href="https://assets.new.siemens.com/siemens/assets/api/uuid:1b43afb5-2d07-47f7-9eb7-893fe7d0bc59/TCOD-2024_original.pdf" target="_blank" rel="noopener">Siemens, The True Cost of Downtime 2024</a>
+        </div>
+        <div class="stat">
+          <b>23%</b>
+          <p>of unplanned downtime in manufacturing traced to human error, against 9% in other sectors.</p>
+          <a class="cite" href="https://www.engineering.com/human-error-is-worse-in-manufacturing-compared-to-other-sectors/" target="_blank" rel="noopener">Vanson Bourne for ServiceMax, 2017</a>
+        </div>
+      </div>
+    </section>
+
+        <!-- watch ----------------------------------------------------------- -->
+    <section class="band" id="watch">
+      <div class="wrap">
+        <span class="eyebrow">Watch</span>
+        <h2 class="sec-h">Ustad in 40 seconds</h2>
+        <div class="watch-frame">
+          <video controls playsinline preload="none" poster="assets/launch-poster.jpg" aria-label="Ustad launch film">
+            <source src="assets/ustad-launch.mp4" type="video/mp4" />
+          </video>
+        </div>
+      </div>
+    </section>
+
+    <!-- problem --------------------------------------------------------- -->
+    <section class="band tinted" id="problem">
+      <div class="wrap split">
+        <div>
+          <span class="eyebrow">On the factory floor</span>
+          <h2 class="sec-h big">Your most valuable procedures retire with your senior staff.</h2>
+        </div>
+        <div class="split-body">
+          <p class="body">Changeovers, tank cleaning, tinting-machine calibration, lockout before
+            maintenance: the jobs that decide whether a batch ships live in the heads of a few senior
+            technicians. A new operator learns them by shadowing, by trial, and by scrap.</p>
+          <p class="body">The laminated SOP on the wall says what should happen. Nobody checks whether it
+            did until QC rejects the batch or the line goes down. Ustad puts your senior technician's know-how
+            on every shift, and a second pair of eyes on every step.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- benefits -------------------------------------------------------- -->
+    <section class="band" id="benefits">
+      <div class="wrap">
+        <span class="eyebrow">What changes on your floor</span>
+        <h2 class="sec-h">Faster training. Fewer mistakes. Proof for every step.</h2>
+        <div class="bigstats">
+          <div><b>88%</b><strong>faster</strong><p>New operator's time, against the current method</p></div>
+          <div><b>79%</b><strong>faster</strong><p>Senior technician's time to a usable job card</p></div>
+          <div><b>97%</b><strong>confirmed</strong><p>Correct steps confirmed by the camera check</p></div>
+          <div><b>95%</b><strong>caught</strong><p>Planted errors caught during the job</p></div>
+        </div>
+        <p class="caption">From our factory trials.</p>
+        <h3 class="ba-title">Before and after</h3>
+        <div class="ba">
+          <div class="ba-row ba-head"><span>Today</span><span></span><span>With Ustad</span></div>
+          <div class="ba-row"><span class="ba-old">Know-how lives in one person's head</span><span class="ba-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span><span class="ba-new">Recorded once as a job card, in 20 to 38 seconds</span></div>
+          <div class="ba-row"><span class="ba-old">New workers learn by trial and error</span><span class="ba-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span><span class="ba-new">Guided step by step, by voice: <b>88% faster</b> than the current method</span></div>
+          <div class="ba-row"><span class="ba-old">Writing instructions eats your senior technician's time</span><span class="ba-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span><span class="ba-new">A usable job card, <b>79% faster</b></span></div>
+          <div class="ba-row"><span class="ba-old">Mistakes surface later, at QC or on the line</span><span class="ba-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span><span class="ba-new">Caught on the spot: <b>95%</b> of planted errors</span></div>
+          <div class="ba-row"><span class="ba-old">Paper can't tell whether a step was done right</span><span class="ba-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span><span class="ba-new">Each step checked on camera: <b>97%</b> of correct steps confirmed</span></div>
+          <div class="ba-row"><span class="ba-old">The shift log is filled in from memory</span><span class="ba-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span><span class="ba-new">Every check saves its photo, verdict and reason</span></div>
+        </div>
+        <div class="cost-strip"><div><b>about $0.09</b><span>to record one job</span></div><div><b>about $0.12</b><span>to guide a 4-step job</span></div><div><b>20 to 38 s</b><span>from a short recording to a checked job card</span></div></div>
+      </div>
+    </section>
+
+    <!-- how ------------------------------------------------------------- -->
+    <section class="band" id="how">
+      <div class="wrap">
+        <span class="eyebrow">How it works</span>
+        <h2 class="sec-h">Record the job once. Run it right on every shift.</h2>
+        <div class="two">
+          <article class="mode">
+            <div class="mode-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3.2"/><path d="M4 8V6a2 2 0 0 1 2-2h2M16 4h2a2 2 0 0 1 2 2v2M20 16v2a2 2 0 0 1-2 2h-2M8 20H6a2 2 0 0 1-2-2v-2"/></svg></div>
+            <span class="mode-label">Capture, for your senior technician</span>
+            <h3>Do the job once, talking it through</h3>
+            <p>Wear the glasses or a chest-mounted phone and work as normal. Step cards build on screen as you
+              talk. Ustad turns what you do and say into a job card: the order, the exact settings and torque
+              values you mention, the safety warning before each risky step, and what a finished step should
+              look like to a camera. Before saving, it checks every step against your own footage and rewrites
+              any step that names a part it can't find.</p>
+          </article>
+          <article class="mode feature">
+            <div class="mode-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4 4 10-10"/></svg></div>
+            <span class="mode-label">Guide, for the operator on the line</span>
+            <h3>Hands busy, eyes on the work</h3>
+            <p>The operator hears one step at a time and sees the part to work on outlined live in their view.
+              They say "done" and Ustad looks before it agrees. Right: it moves on and saves a photo. Wrong:
+              it says what is wrong and how to fix it, and holds the job there. When a step is plainly finished,
+              it notices without being asked.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+        <!-- the real product ------------------------------------------------ -->
+    <section class="band tinted" id="product">
+      <div class="wrap">
+        <span class="eyebrow">The product</span>
+        <h2 class="sec-h">The real screens, on a real machine</h2>
+        <p class="body wide">No mockups. These are the app's own screens from a job on a pad-printing machine,
+          with the factory clip fed in as the camera.</p>
+        <div class="shots">
+          <figure><img src="assets/product/capture.jpg" alt="Ustad writing step cards while the expert records" loading="lazy" width="620" height="1342" /><figcaption><b>1. The expert records</b>Step cards appear as they talk.</figcaption></figure>
+          <figure><img src="assets/product/guide.jpg" alt="Ustad guiding a worker to place a blue part" loading="lazy" width="620" height="1342" /><figcaption><b>2. The worker is guided</b>One spoken step at a time, with the part in view.</figcaption></figure>
+          <figure><img src="assets/product/check.jpg" alt="Ustad verifying a step on the machine" loading="lazy" width="620" height="1342" /><figcaption><b>3. The step is checked</b>It moves on only when the camera agrees.</figcaption></figure>
+        </div>
+        <div class="evidence-row">
+          <div>
+            <h3>Every job leaves a record</h3>
+            <p>Each check saves its photo, verdict and reason in a printable evidence pack. A supervisor can also ask a second model to re-check a finished job, or only its doubtful steps.</p>
+          </div>
+          <img src="assets/product/evidence.jpg" alt="A second opinion on a real evidence pack" loading="lazy" width="1204" height="404" />
+        </div>
+      </div>
+    </section>
+
+    <!-- loop ------------------------------------------------------------ -->
+    <section class="band tinted" id="loop">
+      <div class="wrap">
+        <span class="eyebrow">The loop</span>
+        <h2 class="sec-h">What happens when an operator says "done"</h2>
+        <p class="body wide">Reading a checklist aloud is easy. Ustad looks at the work itself, decides
+          whether the step is really done, and acts on that decision before the operator moves on.</p>
+        <figure class="loop-fig">
+          <iframe id="loop-frame" src="figures/glasses-view.html?v=2" title="What a worker would see through glasses with Ustad: the step, the part it found, the verdict and safety warnings" scrolling="no" loading="lazy"></iframe>
+          <figcaption>Concept view: how Ustad could look through glasses with a display, with boxes placed for illustration. Glasses without one
+            would speak the same words. Not tested on glasses yet. Today the same steps and checks run on a phone.</figcaption>
+        </figure>
+        <ol class="loop-steps">
+          <li><span class="n">1</span><div><b>See</b><p>The operator's view, already streaming, is the frame that gets judged.</p></div></li>
+          <li><span class="n">2</span><div><b>Ground</b><p>SAM 3.1 finds the step's target part in that frame and answers with coordinates and a confidence, not an opinion.</p></div></li>
+          <li><span class="n">3</span><div><b>Judge</b><p>Muse Spark weighs the frame, the grounding and the success criteria, and must commit to exactly one action.</p></div></li>
+          <li><span class="n">4</span><div><b>Act</b><p>Move on and save the photo, correct the operator, or ask for a clearer view. Guessing is not an option.</p></div></li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- under the hood -------------------------------------------------- -->
+    <section class="band dark" id="hood">
+      <div class="wrap">
+        <span class="eyebrow">Under the hood</span>
+        <h2 class="sec-h">Pixels in. One decision out.</h2>
+        <p class="body wide">This is one real check, from the raw model output to the action the server
+          takes. Every stage is structured, so every stage can be logged, audited and replayed.</p>
+        <div class="pipe">
+          <article class="pane">
+            <header><span class="pane-n">1</span>SAM 3.1 returns</header>
+<pre><span class="t-p">&lt;0f&gt;</span>0<span class="t-p">&lt;|box;</span><span class="t-k">x1</span>=<span class="t-n">402</span>;<span class="t-k">y1</span>=<span class="t-n">318</span>;
+<span class="t-k">x2</span>=<span class="t-n">611</span>;<span class="t-k">y2</span>=<span class="t-n">497</span>;<span class="t-k">w</span>=<span class="t-n">1280</span>;
+<span class="t-k">h</span>=<span class="t-n">960</span>;<span class="t-k">c</span>=<span class="t-n">0.94</span><span class="t-p">|&gt;</span></pre>
+            <p>A box and a confidence for "tank drain valve". Not a sentence.</p>
+          </article>
+          <article class="pane">
+            <header><span class="pane-n">2</span>Ustad grounds it</header>
+<pre><span class="t-s">Grounding:</span> searched the frame for
+<span class="t-s">"tank drain valve"</span>, found <span class="t-n">1</span> match.
+  <span class="t-n">1.</span> centre of frame, covering
+     <span class="t-n">3.1%</span> of the frame, <span class="t-k">conf</span> <span class="t-n">0.94</span></pre>
+            <p>Parsed into a plain-language report the reasoning model can weigh.</p>
+          </article>
+          <article class="pane hot">
+            <header><span class="pane-n">3</span>Muse Spark must act</header>
+<pre><span class="t-f">verify_step</span>({
+  <span class="t-k">"confidence"</span>: <span class="t-n">0.94</span>,
+  <span class="t-k">"reason"</span>: <span class="t-s">"Lever closed, no water"</span>,
+  <span class="t-k">"say"</span>: <span class="t-s">"Good. Next step."</span>
+})</pre>
+            <p>One tool call. The server advances, banks the photo, speaks the next step.</p>
+          </article>
+        </div>
+        <div class="tools">
+          <span class="tools-label">The only three things it is allowed to do</span>
+          <code class="tool ok">verify_step</code>
+          <code class="tool bad">flag_error</code>
+          <code class="tool warn">request_better_view</code>
+        </div>
+      </div>
+    </section>
+
+    <!-- different ------------------------------------------------------- -->
+    <section class="band" id="different">
+      <div class="wrap">
+        <span class="eyebrow">Why it's different</span>
+        <h2 class="sec-h">Built for the floor, not for a demo</h2>
+        <div class="three">
+          <article class="col">
+            <div class="col-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2.5 12s3.5-6.5 9.5-6.5S21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z"/><circle cx="12" cy="12" r="2.8"/></svg></div>
+            <h3>It never passes a step it didn't see</h3>
+            <p>If the camera can't see the valve clearly, Ustad asks the operator to move instead of guessing.
+              On a running line, a confident wrong pass costs far more than a two-second pause.</p>
+          </article>
+          <article class="col">
+            <div class="col-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a3 3 0 0 0-3 3v6a3 3 0 0 0 6 0V6a3 3 0 0 0-3-3z"/><path d="M5.5 11a6.5 6.5 0 0 0 13 0M12 17.5V21"/></svg></div>
+            <h3>Gloves on, hands full</h3>
+            <p>Operators hold tools and wear gloves, so nothing needs a tap. They just talk: "done", "repeat",
+              "what's wrong", "where is it". Ustad answers out loud and outlines the part on screen.</p>
+          </article>
+          <article class="col">
+            <div class="col-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="6" width="18" height="14" rx="2.5"/><circle cx="12" cy="13" r="3.5"/><path d="M8.5 6l1.5-2.5h4L15.5 6"/></svg></div>
+            <h3>The shift log writes itself</h3>
+            <p>Every checked step saves a timestamped photo and the reason it passed or failed. A finished job
+              is the record your QC lead and auditor ask for, with no checklist filled in from memory at the
+              end of the shift.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+        <!-- features -------------------------------------------------------- -->
+    <section class="band tinted" id="features">
+      <div class="wrap">
+        <span class="eyebrow">What's inside</span>
+        <h2 class="sec-h">Everything a shift needs, with hands on the job</h2>
+        <div class="fit" aria-label="Where it fits"><span>Machine changeovers</span><span>Maintenance and lockout</span><span>Quality checks</span><span>New-hire training</span></div>
+        <div class="three">
+          <article class="col">
+            <div class="col-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12a8 8 0 0 1-8 8H4l2.500-3A8 8 0 1 1 21 12z"/><path d="M9.800 10a2.300 2.300 0 1 1 3.400 2c-.8.5-1.200 1-1.200 1.800M12 16.500h.01"/></svg></div>
+            <h3>Ask Ustad, out loud</h3>
+            <p>"Which one?" "It won't turn." Ustad answers from the expert's own words and the live view, and lights up the part. "Can I skip the lockout?" goes to a supervisor.</p>
+          </article>
+          <article class="col">
+            <div class="col-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h9M8.500 3v2M11 5c-1 4-4 7-7 8M6 9c1 2 3 3.500 6 4"/><path d="M13 21l4-9 4 9M14.500 18h5"/></svg></div>
+            <h3>English and Hindi</h3>
+            <p>A worker can run the whole job in Hindi. Only the words change: the check stays the same, and numbers in every translation are verified in code.</p>
+          </article>
+          <article class="col">
+            <div class="col-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l8 3v6c0 5-3.500 8-8 9-4.500-1-8-4-8-9V6z"/><path d="M12 8v5M12 16h.01"/></svg></div>
+            <h3>Safety checks in code</h3>
+            <p>Lockout and hazard steps are never credited from a later view. A hand too close to a hazard gets a spoken warning, while the job carries on.</p>
+          </article>
+          <article class="col">
+            <div class="col-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9a13 13 0 0 1 18 0M6.500 12.500a8 8 0 0 1 11 0M10 16a3 3 0 0 1 4 0M12 19.500h.01"/></svg></div>
+            <h3>Works through dropouts</h3>
+            <p>If the Wi-Fi drops mid-recording, the phone keeps going and syncs when it reconnects. Mid-job, the worker carries on and resumes at the exact step.</p>
+          </article>
+          <article class="col">
+            <div class="col-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20h16M6 16l3-4 3 2 5-7"/><path d="M15 7h2.500v2.500"/></svg></div>
+            <h3>Job cards that improve</h3>
+            <p>Ustad reads where workers failed, asked and skipped, and proposes edits. A supervisor approves each one, and each approval makes a new version.</p>
+          </article>
+          <article class="col">
+            <div class="col-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2.500"/><path d="M3 9h18M8 14h8"/></svg></div>
+            <h3>A view for supervisors</h3>
+            <p>A dashboard shows every job, every check and what it cost, with the photo behind each verdict and a printable pack for your auditors.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- the data by-product --------------------------------------------- -->
+    <section class="band tinted" id="grows">
+      <div class="wrap">
+        <span class="eyebrow">It compounds</span>
+        <h2 class="sec-h">Every job also builds your data</h2>
+        <p class="body wide">Nobody fills in a form for this. Labelled data is a by-product of normal work: what was asked, what the camera saw, and what was right.</p>
+        <div class="flow">
+          <div><span class="n">1</span><h3>Work gets done</h3><p>Workers follow the job as usual, guided and checked at each step.</p></div>
+          <div><span class="n">2</span><h3>Data is created</h3><p>Every check becomes a labelled example, using the same format the live system uses.</p></div>
+          <div><span class="n">3</span><h3>Models get better</h3><p>Reinforcement learning trains the verifier on that data, so it improves with use over the long run.</p></div>
+        </div>
+        <div class="grow-proof">
+          <div class="gp-num"><b>1,046</b><span>labelled examples, from one 42 second factory clip</span></div>
+          <p><b>Where this stands:</b> the data pipeline is built and has run. Training hasn't run yet, so there's no accuracy result from it. Job cards already improve today: Ustad suggests edits from real runs, and a supervisor approves each one.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- statement ------------------------------------------------------- -->
+    <section class="statement">
+      <div class="wrap">
+        <p class="statement-big">A checklist tells you what should have happened. Ustad tells you what did.</p>
+        <p class="statement-small">Every step is checked against what the camera actually saw, not what someone
+          ticked at the end of the shift.</p>
+      </div>
+    </section>
+
+    <!-- where it runs --------------------------------------------------- -->
+    <section class="band tinted" id="runs">
+      <div class="wrap">
+        <span class="eyebrow">Where it runs</span>
+        <h2 class="sec-h">Strap on a phone today. Clip on glasses tomorrow.</h2>
+        <div class="device-grid">
+          <article class="device">
+            <div class="device-stage">
+              <model-viewer src="models/iphone.glb" poster="assets/poster-iphone.webp" alt="Phone running Ustad"
+                camera-controls disable-zoom disable-pan interaction-prompt="none" min-camera-orbit="-45deg 82deg auto" max-camera-orbit="45deg 82deg auto"
+                environment-image="neutral" exposure="1.1" shadow-intensity="0.6" loading="eager" reveal="auto"
+                touch-action="pan-y" camera-orbit="0deg 82deg 160%"><div slot="progress-bar"></div></model-viewer>
+            </div>
+            <span class="tag">Today</span>
+            <h3>A chest-mounted phone</h3>
+            <p>Any smartphone on a chest strap gives the operator a point-of-view camera, a mic and a speaker.
+              Nothing to install on your machines and nothing to wire into your PLCs.</p>
+          </article>
+          <article class="device feature">
+            <div class="device-stage">
+              <model-viewer src="models/glasses.glb" poster="assets/poster-glasses.webp" alt="Ray-Ban Meta glasses" auto-rotate
+                rotation-per-second="18deg" camera-controls disable-zoom disable-pan interaction-prompt="none"
+                environment-image="neutral" exposure="1.15" shadow-intensity="0.7" loading="lazy" reveal="auto"
+                touch-action="pan-y" camera-orbit="24deg 80deg 110%"><div slot="progress-bar"></div></model-viewer>
+            </div>
+            <span class="tag blue">Where it's going</span>
+            <h3>Ray-Ban Meta glasses</h3>
+            <p>The camera sits where the operator is looking and both hands stay on the job. Same backend, same
+              job cards: the plant changes nothing when it switches.</p>
+          </article>
+        </div>
+
+        <div class="privacy">
+          <div>
+            <h2 class="sec-h">Built so line footage can stay inside your plant</h2>
+            <p class="body">Plant managers ask one question before any other: does video of our line leave
+              the site? Ustad's step checks already run on Muse Glimmer, Meta's open-weight model: on our 8 test
+              cases it gave the same verdicts as Muse Spark, with no false passes. Through a hosted API it took
+              about a minute a check, so today it gives a second opinion after the job. The same code can point
+              at a GPU in your plant, which we have not tested yet.</p>
+          </div>
+          <div class="tiers">
+            <article class="tier"><h3>Hosted</h3><p>Meta Model API. Fastest to stand up.</p></article>
+            <article class="tier"><h3>Second opinion</h3><p>Muse Glimmer through a hosted API, after the job. Working today.</p></article>
+            <article class="tier"><h3>On-premise</h3><p>Muse Glimmer on one GPU inside the plant. Planned, not tested yet.</p></article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- proof ----------------------------------------------------------- -->
+    <section class="band" id="proof">
+      <div class="wrap">
+        <span class="eyebrow">Proof</span>
+        <h2 class="sec-h">Measured, not promised</h2>
+        <p class="body wide">We tested Ustad in two factories: PI Cottex Pvt Ltd, a textile and clothing
+          manufacturer, and MCPL (Modern Colours Private Limited), both in Ludhiana. We are starting with
+          India, a huge market, and Ustad guides workers in English and Hindi. Here is what we measured.</p>
+        <div class="trial-photos trial-media">
+          <figure class="tm-video">
+            <video id="ground-video" muted loop playsinline preload="none" poster="assets/factory/mcpl-ground.jpg" width="540" height="960" aria-label="On ground work at MCPL: walking the production floor past paint drums and lifting gear, with workers at the mixing tanks"><source src="assets/factory/mcpl-ground.mp4" type="video/mp4" /></video>
+            <figcaption><span class="tm-label tm-strong">ON GROUND WORK</span><span class="tm-label">MCPL, Ludhiana</span></figcaption>
+          </figure>
+          <figure class="tm-lead">
+            <img src="assets/factory/picottex-floor.jpg" alt="A worker in a blue uniform and hairnet stacking grey textile pieces on the PI Cottex production floor" loading="lazy" width="1200" height="672" />
+            <figcaption><span class="tm-label">PI Cottex Pvt Ltd, Ludhiana</span></figcaption>
+          </figure>
+          <figure>
+            <img src="assets/factory/mcpl-floor.jpg" alt="The MCPL production floor: a long row of teal mixing machines and steel tanks, with workers in the aisle" loading="lazy" width="1100" height="976" />
+            <figcaption><span class="tm-label">MCPL, Ludhiana</span></figcaption>
+          </figure>
+          <figure>
+            <img src="assets/factory/mcpl-mixers.jpg" alt="Numbered mixing machines and steel tanks at MCPL, with paint drums in front" loading="lazy" width="1100" height="1065" />
+            <figcaption><span class="tm-label">MCPL, Ludhiana</span></figcaption>
+          </figure>
+          <figure class="tm-tail">
+            <img src="assets/factory/mcpl-store.jpg" alt="The MCPL store: drums, cartons and stacked sacks along a concrete aisle" loading="lazy" width="1100" height="977" />
+            <figcaption><span class="tm-label">MCPL, Ludhiana</span></figcaption>
+          </figure>
+        </div>
+        <p class="caption">At PI Cottex Pvt Ltd and MCPL (Modern Colours Private Limited), Ludhiana.</p>
+        <div class="proof-grid">
+          <table class="data measured">
+            <caption>Speed and cost</caption>
+            <tbody>
+              <tr><td>From "done" to a decision</td><td class="num">4 to 5 s</td></tr>
+              <tr><td>From saying "done" to the check starting</td><td class="num">0.3 s</td></tr>
+              <tr><td>Wrong step caught, fix spoken</td><td class="num">yes, live</td></tr>
+              <tr><td>Finished step to the next instruction</td><td class="num">about 7 s</td></tr>
+              <tr><td>Short recording to a checked job card</td><td class="num">20 to 38 s</td></tr>
+              <tr><td>Cost to record one job</td><td class="num">about $0.09</td></tr>
+              <tr><td>Cost of guiding a 4-step job</td><td class="num">about $0.12</td></tr>
+            </tbody>
+          </table>
+          <table class="data">
+            <caption>From the factory trials</caption>
+            <tbody>
+              <tr><td>Correct steps confirmed</td><td class="num">97%</td></tr>
+              <tr><td>Planted errors caught</td><td class="num">95%</td></tr>
+              <tr><td>New operator's time vs the current method</td><td class="num">88% faster</td></tr>
+              <tr><td>Senior technician's time to a usable job card</td><td class="num">79% faster</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="caption">From runs against the live Meta APIs and our factory trials, November 2026. Accuracy can
+          be re-measured with <code>scripts/evaluate.py</code>, which lists the errors it missed next to the ones it caught.</p>
+      </div>
+    </section>
+
+    <!-- will it work ---------------------------------------------------- -->
+    <section class="band" id="worthit">
+      <div class="wrap">
+        <span class="eyebrow">The honest question</span>
+        <h2 class="sec-h">"Will this really work on our floor?"</h2>
+        <p class="body wide">You've seen AI demos before. Here is what we'd ask in your place, and what we found.</p>
+        <div class="three">
+          <article class="col">
+            <h3>Is it accurate enough?</h3>
+            <b class="w-stat">97% and 95%</b>
+            <p>In our factory trials, 97% of correct steps were confirmed and 95% of planted errors were caught. So it isn't perfect: it's a second pair of eyes that saves its photo for every check, and a supervisor stays in charge.</p>
+          </article>
+          <article class="col">
+            <h3>Will workers actually use it?</h3>
+            <b class="w-stat">88% faster</b>
+            <p>New operators finished 88% faster than with the current method. There's nothing to type: they talk, in English or Hindi, with both hands on the job.</p>
+          </article>
+          <article class="col">
+            <h3>Will setup take months?</h3>
+            <b class="w-stat">20 to 38 s</b>
+            <p>An expert records the job once, and a short recording becomes a checked job card in seconds. Nothing is wired into your machines, and there's no training data to collect per machine.</p>
+          </article>
+          <article class="col">
+            <h3>Will my expert have the time?</h3>
+            <b class="w-stat">79% faster</b>
+            <p>Your senior technician does the job they already do, and talks it through. That took 79% less time to reach a usable job card.</p>
+          </article>
+          <article class="col">
+            <h3>Can we afford to run it?</h3>
+            <b class="w-stat">about $0.12</b>
+            <p>That's the model cost of guiding a 4-step job, and about $0.09 to record one. Low enough to use on every job, not only for audits.</p>
+          </article>
+          <article class="col">
+            <h3>Has it been on a real floor?</h3>
+            <b class="w-stat">2 factories</b>
+            <p>PI Cottex Pvt Ltd, a textile and clothing manufacturer, and MCPL (Modern Colours Private Limited), both in Ludhiana. It's not tested on glasses yet: today it runs on a phone.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+        <!-- faq ------------------------------------------------------------- -->
+    <section class="band" id="faq">
+      <div class="wrap faq-wrap">
+        <div>
+          <span class="eyebrow">Questions</span>
+          <h2 class="sec-h">Straight answers</h2>
+        </div>
+        <div class="faq">
+          <details><summary>Does it work on Meta glasses today?</summary><p>Not yet. Ustad is built for Meta glasses, and today it runs in the browser on a phone clipped to the chest, which gives the same camera, microphone and speaker. It hasn't been tested on glasses. The concept view above shows where it's going.</p></details>
+          <details><summary>What do we need to install?</summary><p>Nothing on your machines and nothing wired into your PLCs. It runs in a phone's browser.</p></details>
+          <details><summary>How long does setup take?</summary><p>An expert records the job once. A short recording becomes a checked job card in 20 to 38 seconds. There's no training data to collect for each machine.</p></details>
+          <details><summary>Does video of our line leave the plant?</summary><p>Today, frames go to the hosted Meta Model API. Running the checks on a GPU inside the plant is the plan for sites that need it, and that part isn't tested yet.</p></details>
+          <details><summary>What if the camera can't see the part?</summary><p>Ustad asks for a better view instead of guessing. If its vision model can't find the part, the record shows that no box was found.</p></details>
+          <details><summary>How much does it cost to run?</summary><p>About $0.09 to record a job and about $0.12 to guide a 4-step job, in model costs.</p></details>
+          <details><summary>Which languages does it speak?</summary><p>English and Hindi today. Real accents and factory noise in Hindi still need more testing.</p></details>
+          <details><summary>Has it been used in a real factory?</summary><p>We tested it in two: PI Cottex Pvt Ltd, a textile and clothing manufacturer, and MCPL (Modern Colours Private Limited), both in Ludhiana. In those trials, 97% of correct steps were confirmed, 95% of planted errors were caught, new operators were 88% faster than the current method, and job cards took 79% less of a senior technician's time.</p></details>
+        </div>
+      </div>
+    </section>
+
+    <!-- final call ------------------------------------------------------ -->
+    <section class="closing">
+      <div class="wrap">
+        <img src="assets/logo-white.png" alt="" />
+        <h2>Your best technician, on every shift.</h2>
+        <p>Record one job, then watch it guide the next person through it.</p>
+        <div class="cta-row">
+          <button class="btn btn-white" data-go="capture">Record a job</button>
+          <button class="btn btn-glass" data-go="library">Run a guided job</button>
+        </div>
+        <small>The app needs a demo access code. Judges: it's in the submission.</small>
+      </div>
+    </section>
+
+    <!-- footer ---------------------------------------------------------- -->
+    <footer class="land-foot">
+      <div class="wrap foot-grid">
+        <div>
+          <a class="brand light" href="#top"><img class="logo" src="assets/logo.png" alt="" /><span class="wordmark">Ustad</span></a>
+          <p class="foot-note">Ustad is an AI co-pilot for factory workers, built in ten days for the Meta
+            Global AI Developer Hackathon by a team that runs factory software for a living. The code, the
+            evaluation method and the failure cases are all in the repository.</p>
+        </div>
+        <div class="foot-cta">
+          <a class="btn btn-ghost-dark" id="repo-link" href="https://github.com/prabindersinghh/ustad" target="_blank" rel="noopener"><span class="btn-k">Read the code</span><span class="btn-sub">on GitHub</span></a>
+          <a class="btn btn-primary" href="/dashboard"><span class="btn-k">See a session report</span><span class="btn-sub">supervisor view</span></a>
+        </div>
+      </div>
+      <div class="wrap foot-links">
+        <nav aria-label="Product"><b>Product</b><a href="#how" data-jump="how">How it works</a><a href="#product" data-jump="product">The product</a><a href="#benefits" data-jump="benefits">Benefits</a><a href="#features" data-jump="features">What's inside</a><a href="#grows" data-jump="grows">Gets better over time</a><a href="#runs" data-jump="runs">Where it runs</a></nav>
+        <nav aria-label="Proof"><b>Proof</b><a href="#proof" data-jump="proof">Measured results</a><a href="#faq" data-jump="faq">Questions</a><a href="/dashboard">Dashboard</a></nav>
+        <nav aria-label="Project"><b>Project</b><a href="https://github.com/prabindersinghh/ustad" target="_blank" rel="noopener">GitHub</a><a href="https://github.com/prabindersinghh/ustad#readme" target="_blank" rel="noopener">Technical overview</a></nav>
+        <p class="foot-legal">Built for the Meta Global AI Developer Hackathon 2026. Not tested on glasses yet.<br />&copy; 2026 Prabinder Singh. All rights reserved.</p>
+      </div>
+    </footer>
+  </main>
+</section>
+
+<!-- ============================================================ capture -->
+<section id="screen-capture" class="screen">
+  <div class="camera-wrap">
+    <video id="cap-video" playsinline muted autoplay></video>
+    <div class="overlay-top">
+      <button class="back" data-go="home">&larr;</button>
+      <div id="cap-clock" class="rec-clock" aria-live="off">
+        <i></i><b id="cap-time">0:00</b><span id="cap-state">ready</span>
+        <div class="level" aria-hidden="true"><span id="cap-level"></span></div>
+      </div>
+      <span id="cap-badge" class="badge">0 frames</span>
+    </div>
+    <div class="rec-limit" aria-hidden="true"><span id="cap-limit"></span></div>
+    <div id="cap-count" class="countdown" aria-live="assertive"></div>
+    <div class="overlay-bottom">
+      <div id="cap-drafts" class="drafts" aria-live="polite"></div>
+      <p id="cap-heard" class="heard"></p>
+      <p id="cap-status" class="status-line">Record the whole job, any length up to 2 hours. Say each step out loud as you do it, or tap Mark step between steps.</p>
+      <div class="cap-controls">
+        <button id="cap-mark" class="ghost" hidden>Mark step</button>
+        <button id="cap-btn" class="cockpit-primary">Start recording</button>
+        <button id="cap-pause" class="ghost" hidden>Pause</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ library -->
+<section id="screen-library" class="screen light-screen">
+  <header class="bar">
+    <button class="back dark" data-go="home">&larr;</button>
+    <h2>Procedures</h2>
+    <div class="lang-toggle" role="group" aria-label="Language">
+      <button type="button" data-lang="en" lang="en">English</button>
+      <button type="button" data-lang="hi" lang="hi">हिन्दी</button>
+    </div>
+  </header>
+  <div id="library-list" class="list"></div>
+</section>
+
+<!-- ============================================================ guide -->
+<section id="screen-guide" class="screen">
+  <div class="camera-wrap">
+    <video id="guide-video" playsinline muted autoplay></video>
+    <canvas id="guide-overlay"></canvas>
+    <div class="overlay-top">
+      <button class="back" data-go="home">&larr;</button>
+      <span id="guide-live" class="live-chip connecting"><i></i><b>Connecting</b></span>
+      <span id="guide-progress" class="badge">step</span>
+    </div>
+    <div id="guide-hazard" class="hazard" role="alert"></div>
+    <div id="guide-toast" class="toast"></div>
+    <div id="verdict-flash" class="verdict-flash"></div>
+    <figure id="ref-card" class="ref-card" hidden>
+      <div class="ref-img"><img id="ref-img" alt="The expert's view of this step"><span id="ref-box" class="ref-box" hidden></span></div>
+      <figcaption><b id="ref-title">Expert's view</b><span id="ref-said"></span></figcaption>
+      <button class="ref-close" aria-label="Close">&times;</button>
+    </figure>
+    <div class="overlay-bottom">
+      <div id="ask-panel" class="ask-panel" hidden aria-live="polite">
+        <p id="ask-q" class="ask-q"></p>
+        <p id="ask-a" class="ask-a"></p>
+        <form id="ask-form" class="ask-form" autocomplete="off">
+          <input id="ask-input" type="text" placeholder="Or type a question" enterkeyhint="send" />
+          <button type="submit">Ask</button>
+        </form>
+      </div>
+      <p id="guide-heard" class="heard"></p>
+      <p id="guide-step-title" class="step-title"></p>
+      <p id="guide-instruction" class="instruction">Starting…</p>
+      <div id="guide-spec" class="step-spec" hidden></div>
+      <div id="guide-hints" class="hints">Say <b>done</b> <b>where is it</b> <b>repeat</b> or just ask</div>
+      <div class="aux-controls">
+        <button id="guide-show" class="chip-btn">Show me</button>
+        <button id="guide-ask" class="chip-btn ask">Ask Ustad</button>
+      </div>
+      <div class="guide-controls">
+        <button id="guide-repeat" class="ghost">Repeat</button>
+        <button id="guide-done" class="cockpit-primary">Done. Check it</button>
+        <button id="guide-skip" class="ghost">Skip</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ report -->
+<section id="screen-report" class="screen light-screen">
+  <header class="bar">
+    <button class="back dark" data-go="home">&larr;</button>
+    <h2>Session report</h2>
+  </header>
+  <div id="report-body" class="list"></div>
+</section>
+
+<div id="signin" class="signin" hidden>
+  <form id="signin-form" class="signin-card" autocomplete="off">
+    <button type="button" id="signin-close" class="signin-close" aria-label="Close">&times;</button>
+    <img src="assets/logo-blue.png" alt="Ustad" />
+    <h2>Sign in to the demo</h2>
+    <p>Enter the demo access code you were given. Judges: it's in the submission. A plant would sign in with its own accounts.</p>
+    <label for="signin-code">Access code</label>
+    <input id="signin-code" type="text" autocapitalize="characters" spellcheck="false" required />
+    <div id="signin-error" class="signin-error" role="alert"></div>
+    <button type="submit" class="signin-go">Sign in</button>
+  </form>
+</div>
+<script src="app.js?v=31"></script>
+</body>
+</html>
