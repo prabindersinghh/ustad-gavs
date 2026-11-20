@@ -103,3 +103,9 @@ with every change (see AGENTS.md).
 | 02:50 | `2bf6c45` | Landing gallery: the user's PI Cottex photo and a silent looping ON GROUND WORK clip from MCPL join the three MCPL photos, each tile labelled with its site. The clip downloads and plays only while on screen and keeps to its poster for reduced motion. PI Cottex Pvt Ltd is named across the page, README and submission draft (D-077). |
 | 03:15 | `410b72b` | Landing glasses figure redrawn at the user's request: a black full-width frame with a camera and capture light, on white, because the old navy frame on navy did not read as glasses. The left lens shows the real view and target box; the right lens shows Ustad's words on tinted glass over the same clip. Same phases, timing and words, with larger type for phones. README animation regenerated (D-078). |
 | 03:30 | (this commit) | Glasses figure finished with the user's approval. Both lenses stay clear, with Ustad's words on one small card. A thin rim line shows the state, as on the phone. A new "show me" moment scans for the part and the print head and shows the expert's photo. Boxes follow the parts, using colour tracking, and the caption says they are placed for illustration. The safety warning moved to 12 s, when the hand is really in view. One video feeds both lenses through a canvas, because two video tags on one file could leave a lens empty. |
+
+## 2026-11-20
+
+| Time (IST) | Commit | What happened |
+|---|---|---|
+| (this commit) | (none) | Ustad GAVS starts: this repository is a copy of the Meta hackathon Ustad (all history kept; no `.env`, footage or virtual environment), made for the GAVS hackathon. Additions only: a new README tells the plant-engineer story (three modules: AI plant engineer, breakdown check by eye and ear, Ustad technician), marked built or building; the original README is kept at `docs/README-meta-hackathon.md`; the GAVS deck (PDF) and its slide images are in `docs/gavs/`. No code changed. |
